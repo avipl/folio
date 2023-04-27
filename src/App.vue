@@ -5,7 +5,7 @@ import Intro from './components/Intro.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/my_pict.jpg" />
+    <img alt="Vue logo" class="logo" src="./assets/my_pict.jpg" />
 
     <div class="wrapper">
       <Intro name="Avinash Lakhmawad" />

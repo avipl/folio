@@ -25,17 +25,13 @@ let props = defineProps(['proj_details'])
 
     padding: 30px;
     overflow: auto;
-    width: 85vw;
+    width: var(--view-width);
 }
 
 @media (min-width: 1024px) {
     .langs{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .card-details{
-        width: var(--view-width);
     }
 }
 

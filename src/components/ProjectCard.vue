@@ -15,7 +15,7 @@ console.log(props.is_active);
     <div v-else class="inactive">
         <img alt="Project Snapshot" class="snap-shot" :src=snap width="125" height="125" />
         <div class="title"><h2>{{ title }}</h2></div>
-        <div class="last-update">{{ lu }}</div>
+        <div class="last-update">{{ new Date(lu).toDateString() }}</div>
     </div>
 
 </template>
