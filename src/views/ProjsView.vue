@@ -8,9 +8,12 @@ let id_active = ref('')
 let is_fetching = ref(true)
 fetch_projects()
 
-function fetch_projects(){
+function send_req(token: string){
     var requestOptions = {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'X-Firebase-AppCheck': token,
+        }
     };
 
     fetch(import.meta.env.VITE_API_URL_PFX + 'apis/get_projs', requestOptions)
@@ -22,6 +25,18 @@ function fetch_projects(){
         is_fetching.value = false
     })
     .catch(error => console.log('error', error));
+}
+
+function fetch_projects(){
+    if(process.env.NODE_ENV === 'production'){
+        grecaptcha.ready(function() {
+            grecaptcha.execute(import.meta.env.VITE_API_URL_PFX, {action: 'submit'}).then(function(token) {
+                send_req(token)
+            });
+        });
+    }else{
+        send_req('')
+    }
 }
 
 function id_active_changed(new_id: any){
