@@ -77,6 +77,7 @@ function resetCaro(){
     align-items: center;
     justify-content: center;
     margin-right: 5px;
+    border: 1px hidden;
 }
 
 .card:hover{

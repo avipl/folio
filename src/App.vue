@@ -9,12 +9,6 @@ import Intro from './components/Intro.vue'
 
     <div class="wrapper">
       <Intro name="Avinash Lakhmawad" />
-
-      <nav>
-        <RouterLink to="/">Course</RouterLink>
-        <RouterLink to="/proj_work">Personal</RouterLink>
-        <RouterLink to="/contact">Profiles</RouterLink>
-      </nav>
     </div>
   </header>
   <div class="router-view">
@@ -46,6 +40,7 @@ nav {
   font-size: 14px;
   text-align: center;
   margin-top: 2rem;
+  margin-bottom: 3vw;
 }
 
 nav a.router-link-exact-active {
@@ -64,6 +59,16 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.linked-in-prof{
+  content: url('./assets/In-Blue-26.png');
+  margin-right: 1vw;
+}
+
+.git-prof{
+  content: url('./assets/In-Blue-26.png');
+  margin-right: 1vw;
 }
 
 @media (min-width: 1024px) {
@@ -96,6 +101,12 @@ nav a:first-of-type {
 
     padding: 1rem 0;
     margin-top: 1rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .linked-in-prof{
+    content: url('./assets/In-White-26.png');
   }
 }
 </style>

@@ -7,11 +7,13 @@ let props = defineProps(['proj_details'])
 
 <template>
     <div class="card-details">
-        <div class="langs" v-for="(perc, lang) in proj_details.langs">
-            <LangBar :lang="lang" :perc="perc" />
+        <div v-if="Object.keys(proj_details.langs).length != 0">
+            <div class="langs"  v-for="(perc, lang) in proj_details.langs">
+                <LangBar :lang="lang" :perc="perc" />
+            </div>
         </div>
 
-        <div v-html="proj_details.description"/>
+        <div v-html="proj_details.readme"/>
     </div>
 </template>
 
