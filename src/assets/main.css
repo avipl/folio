@@ -14,6 +14,19 @@ a,
   transition: 0.4s;
 }
 
+.grecaptcha-badge { 
+  visibility: hidden; 
+}
+
+.reCAPTCHA-notice{
+  background-color: var(--color-background-soft);
+  box-shadow: 2px 2px var(--color-background-soft);
+  padding: 10px;
+  width: var(--total-width);
+  margin: 2rem;
+  justify-self: left;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: var(--primary-hover);
@@ -22,12 +35,17 @@ a,
 
 @media (min-width: 1024px) {
   body {
-    display: flex;
+    display: grid;
     place-items: center;
+    grid-template-rows: 95vh 4vh;
   }
 
   #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .reCAPTCHA-notice{
+    width: max-content;
   }
 }

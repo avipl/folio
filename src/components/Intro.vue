@@ -37,9 +37,9 @@ h3 {
 
 .prof-link{
     display: grid;
-    margin-right: 2vw;
-    margin-top: 2vw;
+    margin: 2vw 2vw 2vw 0;
     grid-template-columns: repeat(2, max-content);
+    justify-content: center;
 }
 
 .intro h1,
@@ -49,7 +49,7 @@ h3 {
 
 .linked-in-prof{
   content: url('../assets/In-Blue-26.png');
-  margin-right: 1vw;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -65,17 +65,20 @@ h3 {
   .intro h3 {
     text-align: left;
   }
+  .prof-link{
+        justify-content: left;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  .linked-in-prof{
-    content: url('../assets/In-White-26.png');
-  }
+    .linked-in-prof{
+        content: url('../assets/In-White-26.png');
+    }
 
-  .git-prof{
-    content: url('../assets/github-mark-white.svg');
-    width: 26px;
-    height: 26px;
+    .git-prof{
+        content: url('../assets/github-mark-white.svg');
+        width: 26px;
+        height: 26px;
     }
 }
 </style>

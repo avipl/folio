@@ -5,6 +5,7 @@ import ProjectDetails from '../components/ProjectDetails.vue'
 
 const cw = ref({})
 let id_active = ref('')
+let fetch_status = ref('Fetching project details. Please wait...')
 let is_fetching = ref(true)
 fetch_projects()
 
@@ -17,11 +18,16 @@ function send_req(token: string){
     };
 
     fetch(import.meta.env.VITE_API_URL_PFX + 'apis/get_projs', requestOptions)
-    .then(response => response.text())
+    .then(response => {
+        if(response.status == 200) return response.json()
+        else if(response.status == 404) fetch_status.value = "No projects found."
+        else if(response.status == 401) fetch_status.value = "Unauthorized request."
+        else if(response.status == 500) fetch_status.value = "Problem while processing request."
+        return
+    })
     .then(result => {
-        let res_obj = JSON.parse(result)
-        id_active.value = Object.keys(res_obj)[0]
-        cw.value = res_obj
+        id_active.value = Object.keys(result)[0]
+        cw.value = result
         is_fetching.value = false
     })
     .catch(error => console.log('error', error));
@@ -47,7 +53,7 @@ function id_active_changed(new_id: any){
 
 <template>
     <div class="course-loading" v-if="is_fetching">
-        Fetching projects, please wait...
+        {{ fetch_status }}
     </div>
     <div class="course" v-else>
         <ProjectCarousel :cw_projs="Object.values(cw)" :id_active_changed="id_active_changed" :id_active="id_active"/>
