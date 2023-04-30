@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { onMounted, ref } from 'vue'
+import { load } from 'recaptcha-v3'
 import ProjectCarousel from '../components/ProjectCarousel.vue'
 import ProjectDetails from '../components/ProjectDetails.vue'
 
-const cw = ref({})
-let id_active = ref('')
-let fetch_status = ref('Fetching project details. Please wait...')
+const cw: any = ref({})
+let id_active:any = ref(null)
+let fetch_status = ref('Why portfolio? Only showcases active projects. Updated promptly with GitHub webhooks.')
 let is_fetching = ref(true)
-fetch_projects()
+
+onMounted(() => {
+    load(import.meta.env.VITE_SITE_KEY) .then((recaptcha) => {
+        fetch_projects(recaptcha)
+    })
+})
 
 function send_req(token: string){
     var requestOptions = {
         method: 'GET',
         headers: {
             'X-Firebase-AppCheck': token,
+            'Access-Control-Allow-Origin': location.protocol + '//' + location.hostname 
         }
     };
 
@@ -33,12 +40,10 @@ function send_req(token: string){
     .catch(error => console.log('error', error));
 }
 
-function fetch_projects(){
-    if(process.env.NODE_ENV === 'production'){
-        grecaptcha.ready(function() {
-            grecaptcha.execute(import.meta.env.VITE_API_URL_PFX, {action: 'submit'}).then(function(token) {
-                send_req(token)
-            });
+function fetch_projects(recaptcha: any){
+    if(import.meta.env.MODE === 'production'){
+        recaptcha.execute('submit').then((token: string) => {
+            send_req(token)
         });
     }else{
         send_req('')
@@ -53,7 +58,8 @@ function id_active_changed(new_id: any){
 
 <template>
     <div class="course-loading" v-if="is_fetching">
-        {{ fetch_status }}
+        <div class="load-circle"></div>
+        <div class="changing-faq">{{ fetch_status }}</div>
     </div>
     <div class="course" v-else>
         <ProjectCarousel :cw_projs="Object.values(cw)" :id_active_changed="id_active_changed" :id_active="id_active"/>
@@ -67,9 +73,32 @@ function id_active_changed(new_id: any){
   row-gap: 2vw;
 }
 
+.changing-faq{
+    width: 100%;
+    overflow: hidden;
+    transition: 2s;
+}
+
+.load-circle{
+    width: 32px;
+    height: 32px;
+    border: solid var(--color-text);
+    border-top: solid var(--primary); 
+    border-radius: 50%;
+    border-width: 5px;
+    justify-self: center;
+
+    animation: load 1.0s infinite;
+}
+
+@keyframes load {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}    
+}
+
 .course-loading{
     display: grid;
-    row-gap: 2vw;
+    row-gap: 1vw;
     background-color: var(--color-background-soft);
     box-shadow: 2px 2px var(--color-background-soft);
 
