@@ -37,7 +37,7 @@ let props = defineProps(['proj_details'])
     }
 
     .card-details{
-        max-height: calc(var(--view-height) * 0.75);
+        height: calc(var(--view-height) * 0.60);
         scroll-behavior: auto;
     }
 
