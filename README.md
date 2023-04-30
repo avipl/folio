@@ -1,52 +1,21 @@
-# folio
+# Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+This is my portfolio website(webapp). The whole webapp is designed to achieve one goal, show my latest projects with little no future maintainance. 
 
-## Recommended IDE Setup
+The VueJS is used primarily to allow rapid development. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+There are two parts to my portfolio web app. This repository contains code for the frontend. For the backend code visit [folio-api](https://github.com/avipl/folio_apis){:target="_blank"}
 
-## Type Support for `.vue` Imports in TS
+# Demo
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Visit [https://avi-portfolio.net](https://avi-portfolio.net){:target="_blank"}
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+# Fetures
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+> Always upto date project details. The database is updated automatically whenever new code is pushed to GitHub repository. Thanks to GitHub webhook integration. 
+> Changes theme based on user preference settings on the device.
+> Spam/bot protection without user interation.
 
-## Customize configuration
+## Spam Protection
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+As this website doesn't require users to authenticate. Obviously, there was no way to protect backend APIs. Hence, I intgrated the [reCaptcha-v3](https://google.com){:target="_blank"}. However, as downside it increases the data fetch time. I will be working towards improving the load time. 
