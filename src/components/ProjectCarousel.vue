@@ -6,7 +6,7 @@ let props = defineProps(['cw_projs', 'id_active_changed', 'id_active'])
 
 let step = ref(0)
 let movement = ref(0)
-const slider = ref(null)
+let slider = ref({scrollWidth: 0})
      
 onMounted(() => {
   setStep()

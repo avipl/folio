@@ -61,16 +61,6 @@ nav a:first-of-type {
   border: 0;
 }
 
-.linked-in-prof{
-  content: url('./assets/In-Blue-26.png');
-  margin-right: 1vw;
-}
-
-.git-prof{
-  content: url('./assets/In-Blue-26.png');
-  margin-right: 1vw;
-}
-
 @media (min-width: 1024px) {
   header {
     display: flex;

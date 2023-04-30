@@ -11,7 +11,7 @@ defineProps<{
             Passionate about developing optimized programs to solve complex real-life problems.
         </h3>
         <div class="prof-link">
-            <a class="linked-in-prof" target="_blank" href="https://www.linkedin.com/in/avinash-l-41a984bb/"></a>
+            <a class="linked-in-prof" target="_blank" href="https://www.linkedin.com/in/avipl/"></a>
             <a class="git-prof" target="_blank" href="https://github.com/avipl"></a>
         </div>
   </div>
@@ -37,7 +37,7 @@ h3 {
 
 .prof-link{
     display: grid;
-    margin: 2vw 2vw 2vw 0;
+    margin: 2vw 2vw 4vw 0;
     grid-template-columns: repeat(2, max-content);
     justify-content: center;
 }
@@ -61,12 +61,13 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .intro h1,
-  .intro h3 {
-    text-align: left;
-  }
-  .prof-link{
+      .intro h1,
+    .intro h3 {
+        text-align: left;
+    }
+    .prof-link{
         justify-content: left;
+        margin-bottom: 2vw;
     }
 }
 
