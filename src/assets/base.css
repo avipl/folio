@@ -52,7 +52,8 @@
 @media (min-width: 1024px) {
   :root{
     --header-width: calc(var(--total-width)*0.4);
-  --view-width: calc(var(--total-width) * 0.6);
+    --view-width: calc(var(--total-width) * 0.6);
+    --view-height: 40vw;
   }
 }
 

@@ -35,6 +35,22 @@ let props = defineProps(['proj_details'])
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .card-details{
+        height: calc(var(--view-height) * 0.60);
+        scroll-behavior: auto;
+    }
+
+    .card-details::-webkit-scrollbar-thumb {
+        background: var(--color-border-hover);
+        width: 2px;
+        border-radius: 5px;
+    }
+    .card-details::-webkit-scrollbar {
+        width: 4px;
+        height: 8px;
+        opacity: 0;
+    }
 }
 
 </style>

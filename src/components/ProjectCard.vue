@@ -33,6 +33,4 @@ let props = defineProps(['snap', 'title', 'lu', 'is_active'])
     padding: 20px;
 }
 
-.title{
-}
 </style>
