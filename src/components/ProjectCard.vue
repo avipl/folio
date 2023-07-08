@@ -24,7 +24,6 @@ let props = defineProps(['snap', 'title', 'lu', 'is_active'])
 }
 
 .active{
-    border: 1px solid var(--color-border);
     background-color: var(--color-background-mute);
     padding: 20px;
 }
