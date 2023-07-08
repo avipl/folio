@@ -6,6 +6,8 @@ let props = defineProps(['cw_projs', 'id_active_changed', 'id_active'])
 
 let step = ref(0)
 let movement = ref(0)
+let rightColor = ref('var(--primary)');
+let leftColor = ref('var(--color-border)');
 let slider = ref({scrollWidth: 0})
      
 onMounted(() => {
@@ -14,21 +16,31 @@ onMounted(() => {
 })
 
 function setStep() {
-    const innerWidth = slider.value.scrollWidth
-    const totalCards = props.cw_projs.length
-    step.value = innerWidth / totalCards
+    const innerWidth = slider.value.scrollWidth;
+    const totalCards = props.cw_projs.length;
+    step.value = innerWidth / totalCards;
+
 }
 
 function toLeft(){
-    movement.value += step.value
+    if(movement.value >= 0) return;
+
+    movement.value += step.value;
+    if(movement.value >= 0) leftColor.value = 'var(--color-border)';
+    rightColor.value = 'var(--primary)';
 }
 
 function toRight(){
-    movement.value -= step.value
+    const innerWidth = slider.value.scrollWidth;
+    if(movement.value <= -1 * (innerWidth - step.value)) return;
+    
+    movement.value -= step.value;
+    if(movement.value <= -1 * (innerWidth - step.value)) rightColor.value = 'var(--color-border)';
+    leftColor.value = 'var(--primary)';
 }
 
 function resetCaro(){
-    movement.value = 0
+    movement.value = 0;
 }
 
 </script>
@@ -36,7 +48,7 @@ function resetCaro(){
 <template>
     <div class="caro-belt">
         <div class="arrow-pan">
-            <div class="chev chev-left" @click="toLeft"></div>
+            <div class="chev chev-left" @click="toLeft" :style="{'border-color': leftColor }"></div>
         </div>
         <div class="caro">
             <div class="slider" ref="slider" :style="{'transform': `translateX(` + movement +`px)`}">
@@ -48,7 +60,7 @@ function resetCaro(){
             </div>
         </div>
         <div class="arrow-pan">
-            <div class="chev chev-right" @click="toRight"></div>
+            <div class="chev chev-right" @click="toRight" :style="{'border-color': rightColor }"></div>
         </div>
     </div>
 </template>
@@ -77,17 +89,15 @@ function resetCaro(){
     align-items: center;
     justify-content: center;
     margin-right: 5px;
-    border: 1px hidden;
 }
 
 .card:hover{
-    border: 1px solid var(--color-border);
-    background-color: var(--color-background-soft);
+    background-color: var(--color-border);
 }
 
 .arrow-pan{
     display: inline-flex;
-    background-color: var(--color-background-soft) 0.5;
+    background-color: var(--color-border) 0.5;
     align-items: center;
     width: 4vw;
     margin-left: 1vw;
