@@ -5,8 +5,6 @@ import Intro from './components/Intro.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/my_pict.webp" />
-
     <div class="wrapper">
       <Intro name="Avinash Lakhmawad" />
     </div>
