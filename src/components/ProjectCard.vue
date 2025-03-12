@@ -4,13 +4,13 @@ let props = defineProps(['snap', 'title', 'lu', 'is_active'])
 
 <template>
     <div v-if="is_active == true" class="active">
-        <img alt="" class="snap-shot" :src=snap width="125" height="125" onload="this.style.display: ''"/>
+        <img alt="" class="snap-shot" :src=snap width="125" height="125" style="display: none;" onload="this.style.display: ''"/>
         <div class="title"><h2>{{ title }}</h2></div>
         <div class="last-update">{{ new Date(lu).toDateString() }}</div>
     </div>
 
     <div v-else class="inactive">
-        <img alt="Project Snapshot" class="snap-shot" :src=snap width="125" height="125" />
+        <img class="snap-shot" :src=snap width="125" height="125" style="display: none;" onload="this.style.display: ''"/>
         <div class="title"><h2>{{ title }}</h2></div>
         <div class="last-update">{{ new Date(lu).toDateString() }}</div>
     </div>
@@ -19,7 +19,6 @@ let props = defineProps(['snap', 'title', 'lu', 'is_active'])
 
 <style scoped>
 .snap-shot{
-    display: none;
     object-fit: cover;
     width: 128px;
     height: 72px;
