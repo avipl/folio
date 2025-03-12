@@ -19,6 +19,7 @@ let props = defineProps(['snap', 'title', 'lu', 'is_active'])
 
 <style scoped>
 .snap-shot{
+    object-fit: cover;
     width: 128px;
     height: 72px;
 }
